@@ -1,6 +1,6 @@
 # Internet Archive Server Status Checker
 
-A very basic status checker for IA servers in C. Currently, there is only Linux support and it checks every 30 minutes.
+A very basic status checker for IA servers in C. Currently, there is Linux and macOS support and it checks every 30 minutes.
 
 Feel free to contribute if you want!
 
