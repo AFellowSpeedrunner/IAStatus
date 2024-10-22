@@ -19,6 +19,7 @@ const char *IA_URLS[] = {
     "https://web.archive.org",
     "https://mastodon.archive.org",
     "https://openlibrary.org",
+    "https://archive-it.org",
 };
 
 double calculate_response_time(struct timeval start, struct timeval end) {
@@ -84,11 +85,11 @@ void check_internet_archive() {
                 } else if (response_code >= 400 && response_code < 500) {
                     // Client errors (4xx) - Site is considered down
                     printf(RED "Status: Down (Client Error %ld)\n", response_code);
-                    printf("Explanation: There was a client error, possibly IA is unavailable.\n" RESET);
+                    printf("Explanation: There was a client-side error, possibly IA is unavailable.\n" RESET);
                 } else if (response_code >= 500) {
                     // Server errors (5xx) - Site is considered down
                     printf(RED "Status: Down (Server Error %ld)\n", response_code);
-                    printf("Explanation: There is a server error. IA may be serving the 'Temporarily Offline' screen.\n" RESET);
+                    printf("Explanation: There is a server-side error. IA may be serving the 'Temporarily Offline'/'Service Availability' screen.\n" RESET);
                 } else {
                     // Handle any other codes as "down"
                     printf(RED "Status: Down (Unhandled Status Code: %ld)\n", response_code);
